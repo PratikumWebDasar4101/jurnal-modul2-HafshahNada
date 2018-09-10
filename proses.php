@@ -1,51 +1,56 @@
 <?php
-
-function rekursif_baris ($value){
-	rekursif_kolom($value);
-	echo"<br>";
-	$value--;
-	if (value >=1)
-		rekursif_baris($value);
-}
-function rekursif_kolom($batas, $awal){
-	echo "*";
-	$awal++;
-	if ($awal <= $batas)
-		rekursif_kolom($batas, $awal);
-}
-function deret_ganjil_genap($value){
-	$arr_genap = array();
-	$arr_ganjil = array();
-	for ($i = 1, $i <= $value,$i++){
-		if ($i % 2 == 0)
-			array_push($arr_genap, $i);
-		else
-			array_push($arr_ganjil,$i);
+function garis ($n){
+	if ($n >= 1) {
+		kotak($n);
+		echo "<br>";
+		$n--;
+		garis ($n);
 	}
-	echo "Genap&emsp; =";
-	for ($i=0,$i <count($arr_genap,$i++)){
-		echo $arr_genap[$i];
-		if ($i !=count($arr_genap)-1)
-			echo ",";
-
+}
+function kotak ($garis,$kotak =1){
+	echo "*";
+	$kotak++;
+	if ($kotak <=$garis)
+		kotak ($garis,$kotak);
+	
+}
+function ganjil_genap ($nilai){
+	$genap = array();
+	$ganjil = array();
+	for ($b=1; $b <$nilai ; $b++) { 
+		if ($b % 2==0) 
+			array_push($genap, $b);
+		else
+			array_push($ganjil, $b);
+	}
+	echo "genap  :";
+	for ($a=1; $b <count($genap) ; $b++) { 
+		echo $genap[$b];
+		if ($b != count($genap)-1) {
+			echo ", ";
+		}
 	}
 	echo "<br>";
-	echo "Ganjil&embsp; =";
-	for ($i=0,$i <count($arr_ganji,$i++){
-		echo $arr_ganjil[$i];
-		if ($i !=count($arr_ganjil)-1)
-			echo ",";
+	echo "genap  :";
+	for ($b=0; $b <count($ganjil) ; $b++) { 
+		echo $ganjil[$b];
+		if ($b != count($ganjil)-1) {
+			echo ", ";
+		}
 	}
+	echo "<br>";
+	echo "<br>";
+	echo "Jumlah deret Genap =". count($genap);
+	echo "<br>";
+	echo "Jumlah deret Ganjil =". count($ganjil);
 }
-echo "<br>";
-echo "<br>";
-echo 'Jumlah deret genap :'.count($arr_genap);
-echo "<br>";
-echo 'Jumlah deret ganjil :'.count($arr_ganjil);
-echo "<br>";
-if (isset($_GET['angka'])){
-	$angka = isset($_GET['angka']) ? $_GET['angka']:0;
-	rekursif_baris($angka);
+if (isset($_GET ["submit"])) {
+
+		$n = $_GET ["n"];
+		garis($n);
+		ganjil_genap($n);
 }
+
+
 
 ?>
